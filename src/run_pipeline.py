@@ -21,14 +21,21 @@ class Pipeline:
         patent_ids = self.db.get_claims_ids()
 
         for patent_id in patent_ids:
+            print(f"Processing patent ID: {patent_id}")
             claims_str = self.db.get_claims_str(patent_id)
             #embed claims_str using openai embeddings API
             embedding = self.model.encode(claims_str)
             #store embedding in faiss index
+            self.index.add(embedding)
 
+    def get_similar_claims(self, query, top_k=5):
+        query_embedding = self.model.encode(query)
+        distances, indices = self.index.search(query_embedding, top_k)
+        return indices
 
      
 
 if __name__ == "__main__":
     pipeline = Pipeline()
     pipeline.embedd_claims()
+    print(pipeline.get_similar_claims("A method for manufacturing a widget"))
