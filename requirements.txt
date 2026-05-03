@@ -3,3 +3,6 @@ psycopg2-binary
 faiss-cpu
 chromadb
 sentence_transformers
+numpy
+FlagEmbedding
+torch
