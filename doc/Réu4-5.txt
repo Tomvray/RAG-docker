@@ -1,0 +1,11 @@
+##Points à aborder
+
+1.  Comment split le dataset pour le training?
+    split sur une catégorie? / year
+
+2.  Modèle entrainé: Finetuning?
+
+3.  Quels métric?
+
+4.  Comment utiliser le cluster?
+    docker?
